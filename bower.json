@@ -1,0 +1,17 @@
+{
+  "name": "test-cli",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "droll": "https://github.com/thebinarypenguin/droll.git#^0.1.2"
+  }
+}

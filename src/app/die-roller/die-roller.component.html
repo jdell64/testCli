@@ -1,0 +1,16 @@
+
+<div class="container">
+    <h1>Dice rolling form</h1>
+    <form (ngSubmit)="onSubmit($event)" #diceForm="ngForm">
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="numberOf" required>
+        <label for="sides">d</label>
+        <select class="form-control" required [(ngModel)]="selectedSide" >
+          <option *ngFor="let s of sides" [value]="s" [selected]="s==20">{{s}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-default">Roll</button>
+    </form>
+</div>
+
+<!-- <button (click)="rollDie()">Roll</button> -->
