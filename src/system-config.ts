@@ -42,8 +42,8 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
-    'main': 'main.js'
-    // 'droll': 'vendor/droll'
+    'main': 'main.js',
+    'tsroll': 'vendor/tsroll/dist'
   },
   packages: cliSystemConfigPackages
 });

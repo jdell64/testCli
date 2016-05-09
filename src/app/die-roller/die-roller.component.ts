@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import * as droll from 'droll/droll.js';
-import * as droll from 'droll';
+import * as tsroll from 'tsroll/tsroll'; 
+
 
 @Component({
   moduleId: module.id,
@@ -24,7 +24,7 @@ export class DieRollerComponent implements OnInit {
     console.log(this.numberOf);
     console.log(this.sides);
     console.log(this.selectedSide);
-    // trying to get this line to work (need droll):
-    console.log(droll.roll(`${this.numberOf}d${this.selectedSide}`));
+    // this line give me probs
+    var dr = new tsroll.DiceRoller.Droll();
   }
 }
