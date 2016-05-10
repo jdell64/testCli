@@ -28,12 +28,42 @@ const barrels: string[] = [
   'app',
   'app/shared',
   'app/die-roller',
+  'app/toolbar',
   /** @cli-barrel */
 ];
 
 const cliSystemConfigPackages: any = {};
-barrels.forEach((barrelName: string) => { cliSystemConfigPackages[barrelName] = {main: 'index'}; });
-cliSystemConfigPackages["tsroll"] = { "defaultExtension": "js"}
+barrels.forEach((barrelName: string) => { cliSystemConfigPackages[barrelName] = { main: 'index' }; });
+
+// load modules:
+cliSystemConfigPackages["tsroll"] = { "defaultExtension": "js" }
+
+cliSystemConfigPackages['@angular2-material/core'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'core.js'
+}
+
+cliSystemConfigPackages['@angular2-material/toolbar'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'toolbar.js'
+}
+
+cliSystemConfigPackages['@angular2-material/button'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'button.js'
+}
+
+cliSystemConfigPackages['@angular2-material/input'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'input.js'
+}
+
+
+
 /** Type declaration for ambient System. */
 declare var System: any;
 
@@ -43,10 +73,11 @@ System.config({
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
     'main': 'main.js',
+    '@angular2-material': 'vendor/@angular2-material',
     'tsroll': 'vendor/tsroll/dist'
   },
   packages: cliSystemConfigPackages
 });
 
 // Apply the user's configuration.
-System.config({map, packages});
+System.config({ map, packages });

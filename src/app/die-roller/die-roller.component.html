@@ -1,15 +1,14 @@
 <div class="container">
-  <h1>Dice rolling form</h1>
   <form (ngSubmit)="onSubmit($event)" #diceForm="ngForm">
     <div class="form-group">
-      <input type="number" class="form-control" [(ngModel)]="numberOf" required min="1">
+      <md-input type="number" class="form-control" [(ngModel)]="numberOf" required min="1"></md-input>
       <label for="sides">d</label>
       <select class="form-control" required [(ngModel)]="selectedSide">
           <option *ngFor="let s of sides" [value]="s" [selected]="s==20">{{s}}</option>
         </select>
-      <input type="number" class="form-control" [(ngModel)]="modifier" required>
+      <md-input type="number" class="form-control" [(ngModel)]="modifier" required></md-input>
     </div>
-    <button type="submit" class="btn btn-default">Roll</button>
+    <button md-raised-button type="submit" class="md-button md-button-raised" color="accent">Roll</button>
   </form>
 </div>
 <div class="container">

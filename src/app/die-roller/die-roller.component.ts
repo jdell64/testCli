@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 // import * as tsroll from 'tsroll/tsroll'; 
 import {DiceRoller} from 'tsroll/tsroll';
-
+import { MdButton } from '@angular2-material/button'
+import { MdInput } from '@angular2-material/input'
+// @Component({
+//   selector: 'md-button',
+//   directives: [MdButton]
+// })
 
 @Component({
   moduleId: module.id,
   selector: 'die-roller-app',
   templateUrl: 'die-roller.component.html',
-  styleUrls: ['die-roller.component.css']
+  styleUrls: ['die-roller.component.css'],
+  directives: [MdButton, MdInput]
 })
 export class DieRollerComponent implements OnInit {
 
