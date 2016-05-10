@@ -33,7 +33,7 @@ const barrels: string[] = [
 
 const cliSystemConfigPackages: any = {};
 barrels.forEach((barrelName: string) => { cliSystemConfigPackages[barrelName] = {main: 'index'}; });
-
+cliSystemConfigPackages["tsroll"] = { "defaultExtension": "js"}
 /** Type declaration for ambient System. */
 declare var System: any;
 

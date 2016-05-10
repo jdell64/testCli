@@ -1,11 +1,11 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {enableProdMode} from '@angular/core';
-import {TestCliAppComponent, environment} from './app/';
+import { environment} from './app/';
 import {DieRollerComponent} from './app/die-roller';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(TestCliAppComponent);
+// bootstrap(TestCliAppComponent);
 bootstrap(DieRollerComponent);

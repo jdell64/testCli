@@ -12,9 +12,7 @@ module.exports = function(defaults) {
       'reflect-metadata/*.js',
       'rxjs/**/*.js',
       '@angular/**/*.js',
-      'tsroll/dist/tsroll.js'
-      // 'droll/droll.js'
-      
+      'tsroll/dist/*.js'      
     ]
   });
 };

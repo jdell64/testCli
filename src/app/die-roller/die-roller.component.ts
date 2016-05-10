@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as tsroll from 'tsroll/tsroll'; 
+// import * as tsroll from 'tsroll/tsroll'; 
+import {DiceRoller} from 'tsroll/tsroll';
 
 
 @Component({
@@ -13,18 +14,28 @@ export class DieRollerComponent implements OnInit {
   numberOf: number;
   sides = [2, 4, 6, 8, 10, 12, 20, 100];
   selectedSide: number;
+  modifier: number;
+  answer: string;
+  private result: DiceRoller.DrollResult;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.numberOf = 1;
     this.selectedSide = 20;
+    this.modifier = 0;
+    this.answer = "";
   }
   onSubmit(event) {
-    console.log(this.numberOf);
-    console.log(this.sides);
-    console.log(this.selectedSide);
+    // console.log(this.numberOf);
+    // console.log(this.sides);
+    // console.log(this.selectedSide);
     // this line give me probs
-    var dr = new tsroll.DiceRoller.Droll();
+    // var droll = DiceRoller.Droll
+
+    var dr = new DiceRoller.Droll();
+    this.result = dr.roll(this.numberOf + "d" + this.selectedSide + "+" + this.modifier);
+    console.log(this.result.toString());
+    this.answer = this.result.toString();
   }
 }
