@@ -29,6 +29,7 @@ const barrels: string[] = [
   'app/shared',
   'app/die-roller',
   'app/toolbar',
+  'app/box-animater',
   /** @cli-barrel */
 ];
 

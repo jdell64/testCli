@@ -17,9 +17,10 @@
 .toastr{
     position: absolute;
     right: 15%;
-    background: white;
+    /*background: white;*/
     padding: 10px 20px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
+    color:white;
     border-radius: 4px;
     z-index: 1;
     
@@ -27,7 +28,40 @@
     -webkit-box-shadow: 4px 4px 10px -2px rgba(0,0,0,0.5);
     -moz-box-shadow: 4px 4px 10px -2px rgba(0,0,0,0.5);
     box-shadow: 4px 4px 10px -2px rgba(0,0,0,0.5);
+    
 }
+
+.toastrSuccess{
+    background: green;
+    
+}
+.toastrFail{
+    background: red;
+}
+    /*animations?*/
+.box {
+  /*width: 100px;*/
+  /*height: 100px;*/
+  /*background-color: red;*/
+  transition: all 0.35s ease-in-out;
+}
+.box.ng-enter {
+  opacity: 0;
+  height: 0;
+}
+.box.ng-enter-active {
+  opacity: 1;
+  min-height: 100px;
+}
+.box.ng-leave-active {
+  opacity: 0;
+  height: 0;
+}
+
+
+
+
+
 .toastr-divider {
     margin: 0;
 }

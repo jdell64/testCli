@@ -22,14 +22,17 @@ export class DieRollerComponent implements OnInit {
   modifier: number;
   answer: string;
   rolls: string;
+
+  crit: boolean;
   twentyIsCrit: boolean;
   oneIsCrit: boolean;
-  
+
   // toastr settings
   toastrTitle: string;
   toastrIcon: string;
   toastrMessage: string;
-  
+  toastrClass: string;
+
   private result: DiceRoller.DrollResult;
 
   constructor() { }
@@ -40,8 +43,10 @@ export class DieRollerComponent implements OnInit {
     this.modifier = 0;
     this.answer = "";
     this.rolls = "";
+    this.crit = false;
     this.twentyIsCrit = true;
     this.oneIsCrit = true;
+    this.toastrClass = "toastrNeutral";
   }
 
   onSubmit(event) {
@@ -50,20 +55,37 @@ export class DieRollerComponent implements OnInit {
     // console.log(this.result.total.toString());
     this.rolls = this.result.rolls.join(', ')
     this.answer = this.result.total.toString();
-    
+
 
     if (this.selectedSide == 20) {
       if (this.twentyIsCrit && this.result.rolls.length == 1 && this.result.rolls[0] == 20) {
         this.toastrIcon = 'done';
         this.toastrTitle = 'Critical Success'
-        this.toastrMessage =  'Yay!'
-        console.log('crit hit');
+        this.toastrMessage = 'Yay!'
+        this.crit = true;
+        this.toastrClass = "toastrSuccess";
+        // console.log('crit hit');
+
+        // hide after 3 seconds
+        setTimeout(function () {
+          this.crit = false;
+          //  console.log(this.edited);
+        }.bind(this), 3000);
       } else if (this.oneIsCrit && this.result.rolls.length == 1 && this.result.rolls[0] == 1) {
         this.toastrIcon = 'warning'
         this.toastrTitle = 'Critical Failure!'
-        this.toastrMessage =  'Womp womp :( !'
-        console.log('crit miss');
+        this.toastrMessage = 'Womp womp :( !'
+        // console.log('crit miss');
+        this.crit = true;
+        this.toastrClass = "toastrFail";
+        // hide after 3 seconds
+        setTimeout(function () {
+          this.crit = false;
+          //  console.log(this.edited);
+        }.bind(this), 3000);
       }
+
+
     }
 
   }
