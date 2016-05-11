@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>TestCli</title>
-  <base href="/">
-  {{content-for 'head'}}
+  <base href="/"> {{content-for 'head'}}
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
   <!-- Service worker support is disabled by default.
        Install the worker script and uncomment to enable.
        Only enable service workers in production.
@@ -20,10 +20,12 @@
   </script>
   -->
 </head>
+
 <body>
   <app-toolbar></app-toolbar>
-  <die-roller-app>Loading... </die-roller-app>
-
+  <div layout="column">
+    <die-roller-app>Loading... </die-roller-app>
+  </div>
   <script src="vendor/es6-shim/es6-shim.js"></script>
   <script src="vendor/reflect-metadata/Reflect.js"></script>
   <script src="vendor/systemjs/dist/system-polyfills.js"></script>
@@ -38,4 +40,5 @@
     }).catch(console.error.bind(console));
   </script>
 </body>
+
 </html>

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import * as tsroll from 'tsroll/tsroll'; 
 import {DiceRoller} from 'tsroll/tsroll';
 import { MdButton } from '@angular2-material/button'
-import { MdInput } from '@angular2-material/input'
+import { MdInput} from '@angular2-material/input'
+// import { MdLayout } from '@angular2-material/core'
 // @Component({
 //   selector: 'md-button',
 //   directives: [MdButton]
@@ -22,6 +23,8 @@ export class DieRollerComponent implements OnInit {
   selectedSide: number;
   modifier: number;
   answer: string;
+  // TODO: add formula to material list
+  formula: string;
   private result: DiceRoller.DrollResult;
 
   constructor() { }
@@ -31,6 +34,7 @@ export class DieRollerComponent implements OnInit {
     this.selectedSide = 20;
     this.modifier = 0;
     this.answer = "";
+    this.formula = "";
   }
   onSubmit(event) {
     // console.log(this.numberOf);
@@ -41,7 +45,9 @@ export class DieRollerComponent implements OnInit {
 
     var dr = new DiceRoller.Droll();
     this.result = dr.roll(this.numberOf + "d" + this.selectedSide + "+" + this.modifier);
-    console.log(this.result.toString());
-    this.answer = this.result.toString();
+    console.log(this.result.total.toString());
+    this.formula = this.result.rolls + " + " + this.result.modifier + " = " + this.result.total
+    // this.formula = this.result.toString();
+    this.answer = this.result.total.toString();
   }
 }
