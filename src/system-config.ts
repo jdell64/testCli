@@ -62,6 +62,17 @@ cliSystemConfigPackages['@angular2-material/input'] = {
   main: 'input.js'
 }
 
+cliSystemConfigPackages['@angular2-material/checkbox'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'checkbox.js'
+}
+
+cliSystemConfigPackages['@angular2-material/icon'] = {
+  format: 'cjs',
+  defaultExtension: 'js',
+  main: 'icon.js'
+}
 
 
 /** Type declaration for ambient System. */

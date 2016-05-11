@@ -1,34 +1,81 @@
-<div class="container" layout="row">
-  <div class="container well">
-    <p>examples: "1d20+4", "3d6", "4d10-4"</p>
+<div class="toastr">
+  <div class="toastr-head">
+    <!--<span class="toastr-icon">ICON HERE</span>-->
+    <!--<md-icon>face</md-icon>-->
+    <i class="material-icons">{{toastrIcon}}</i>
+    <!--<i class="material-icons">done</i>-->
+    <span class="toastr-title">{{toastrTitle}}</span>
   </div>
-  <form (ngSubmit)="onSubmit($event)" #diceForm="ngForm">
-    <div class="form-group">
-      <md-input type="number" class="form-control" min="1" align="end" [(ngModel)]="numberOf" required></md-input>
-      <md-input-container>
-        <label for="sides">d</label>
+  <hr class="toastr-divider">
+  <div class="toastr-body">
+    <span class="toastr-msg">{{toastrMessage}}</span>
+  </div>
+</div>
 
-        <select class="form-control" required [(ngModel)]="selectedSide">
-          <option *ngFor="let s of sides" [value]="s" [selected]="s==20">{{s}}</option>
-        </select>
-      </md-input-container>
-      <!--<label for="modifier" class="signHolder">{{modifier < 0 ? "" : "+"}}</label>-->
-      <md-input type="number" class="form-control" [(ngModel)]="modifier" required [value]>
-        <span md-prefix>{{modifier < 0 ? "" : "+"}}</span>
-      </md-input>
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-md-5">
+          <form (ngSubmit)="onSubmit($event)" #diceForm="ngForm" align="center">
+            <h3>Dice Roller</h3>
+            <div class="form-group">
+              <md-input type="number" class="diceNumberInput" min="1" align="end" [(ngModel)]="numberOf" required></md-input>
+              <md-input-container>
+                <label for="sides">d</label>
+                <select class="" required [(ngModel)]="selectedSide">
+                  <option *ngFor="let s of sides" [value]="s" [selected]="s==20">{{s}}</option>
+                </select>
+              </md-input-container>
+              <!--<label for="modifier" class="signHolder">{{modifier < 0 ? "" : "+"}}</label>-->
+              <md-input type="number" class="diceNumberInput" [(ngModel)]="modifier" required [value]>
+                <span md-prefix>{{modifier < 0 ? "" : "+"}}</span>
+              </md-input>
+            </div>
+            <div class="form-group" align="center">
+              <button md-raised-button type="submit" class="md-button md-button-raised" color="accent">Roll</button>
+            </div>
+            <hr>
+            <div class="form-group">
+              <h4>D20 options</h4>
+              <md-checkbox [ngModel]="twentyIsCrit">
+                20 is Critical Success
+              </md-checkbox>
+              <md-checkbox [ngModel]="oneIsCrit">
+                1 is Critical Failure
+              </md-checkbox>
+              
+            </div>
+            
+          </form>
+        </div>
+        <!--TODO: make this a list-->
+        <div class="col-xs-12 col-md-5 col-md-offset-1" align="center">
+          <h3>Results</h3>
+          <div class="form-group">
+            <div class="col-xs-2">
+              <label for="total" class="resultsLabel">Total</label>
+            </div>
+            <div class="col-xs-10">
+              <!--<input class="form-control" type="text" readonly [ngModel]="answer">-->
+              <md-input name="total" type="text" color="secondary" class="resultsInput" [ngModel]="answer" disabled></md-input>
+            </div>
+          </div>
+          <div class="form-group">
+            <!--this should be a select multiple, use ngFor to repeat the formulas in it... readonly?-->
+            <div class="col-xs-2" >
+              <label for="total"class="resultsLabel">Rolls</label>
+            </div>
+            <div class="col-xs-10">
+              <md-input type="text" color="secondary" class="resultsInput" [ngModel]="rolls" disabled></md-input>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
     </div>
-    <button md-raised-button type="submit" class="md-button md-button-raised" color="accent">Roll</button>
-  </form>
-</div>
-
-<!--TODO: make this a list-->
-<div class="container" layout="row">
-  <md-input type="text" color="secondary" [ngModel]="formula" disabled>
-    <!--<span [ngModel]="answer"></span>-->
-  </md-input>
-</div>
-<div>
-  <md-input type="text" color="secondary" [ngModel]="answer" disabled></md-input>
+  </div>
 </div>
 
 <!-- <button (click)="rollDie()">Roll</button> -->

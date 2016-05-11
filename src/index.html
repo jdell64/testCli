@@ -6,6 +6,10 @@
   <title>TestCli</title>
   <base href="/"> {{content-for 'head'}}
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Service worker support is disabled by default.
@@ -23,7 +27,8 @@
 
 <body>
   <app-toolbar></app-toolbar>
-  <div layout="column">
+  <!--until material 2 goes beta with layouts, gotta use bootstrap-->
+  <div class="container-fluid">
     <die-roller-app>Loading... </die-roller-app>
   </div>
   <script src="vendor/es6-shim/es6-shim.js"></script>

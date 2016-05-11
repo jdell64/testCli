@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-// import * as tsroll from 'tsroll/tsroll'; 
-import {DiceRoller} from 'tsroll/tsroll';
+import { DiceRoller } from 'tsroll/tsroll';
 import { MdButton } from '@angular2-material/button'
 import { MdInput} from '@angular2-material/input'
-// import { MdLayout } from '@angular2-material/core'
-// @Component({
-//   selector: 'md-button',
-//   directives: [MdButton]
-// })
+import { MdCheckbox } from '@angular2-material/checkbox'
+
+// mdIcon does not work ATM
+// import { MdIcon } from '@angular2-material/icon'
 
 @Component({
   moduleId: module.id,
   selector: 'die-roller-app',
   templateUrl: 'die-roller.component.html',
   styleUrls: ['die-roller.component.css'],
-  directives: [MdButton, MdInput]
+  directives: [MdButton, MdInput, MdCheckbox]
 })
 export class DieRollerComponent implements OnInit {
 
@@ -23,8 +21,15 @@ export class DieRollerComponent implements OnInit {
   selectedSide: number;
   modifier: number;
   answer: string;
-  // TODO: add formula to material list
-  formula: string;
+  rolls: string;
+  twentyIsCrit: boolean;
+  oneIsCrit: boolean;
+  
+  // toastr settings
+  toastrTitle: string;
+  toastrIcon: string;
+  toastrMessage: string;
+  
   private result: DiceRoller.DrollResult;
 
   constructor() { }
@@ -34,20 +39,32 @@ export class DieRollerComponent implements OnInit {
     this.selectedSide = 20;
     this.modifier = 0;
     this.answer = "";
-    this.formula = "";
+    this.rolls = "";
+    this.twentyIsCrit = true;
+    this.oneIsCrit = true;
   }
-  onSubmit(event) {
-    // console.log(this.numberOf);
-    // console.log(this.sides);
-    // console.log(this.selectedSide);
-    // this line give me probs
-    // var droll = DiceRoller.Droll
 
+  onSubmit(event) {
     var dr = new DiceRoller.Droll();
     this.result = dr.roll(this.numberOf + "d" + this.selectedSide + "+" + this.modifier);
-    console.log(this.result.total.toString());
-    this.formula = this.result.rolls + " + " + this.result.modifier + " = " + this.result.total
-    // this.formula = this.result.toString();
+    // console.log(this.result.total.toString());
+    this.rolls = this.result.rolls.join(', ')
     this.answer = this.result.total.toString();
+    
+
+    if (this.selectedSide == 20) {
+      if (this.twentyIsCrit && this.result.rolls.length == 1 && this.result.rolls[0] == 20) {
+        this.toastrIcon = 'done';
+        this.toastrTitle = 'Critical Success'
+        this.toastrMessage =  'Yay!'
+        console.log('crit hit');
+      } else if (this.oneIsCrit && this.result.rolls.length == 1 && this.result.rolls[0] == 1) {
+        this.toastrIcon = 'warning'
+        this.toastrTitle = 'Critical Failure!'
+        this.toastrMessage =  'Womp womp :( !'
+        console.log('crit miss');
+      }
+    }
+
   }
 }
